@@ -1,0 +1,16 @@
+language: python
+
+sudo: false
+
+python:
+  - 3.3
+  - 3.4
+  - 3.5
+  - 3.6
+
+install:
+  - pip install -r requirements-dev.txt
+
+script: py.test --cov=horoscofox tests
+
+after_success: codecov
