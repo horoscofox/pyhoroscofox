@@ -73,7 +73,7 @@ def test_client_tomorrow(mocker):
     assert resp.date_start == datetime(2018, 3, 30, 0, 0)
     assert resp.date_end == datetime(2018, 3, 31, 0, 0)
 
-    resp = paolo.get(sign='scorpio', kind='today')
+    resp = paolo.get(sign='scorpio', kind='tomorrow')
     assert resp.text == 'Va tutto male anche domani, che credevi?'
     assert resp.date_start == datetime(2018, 3, 30, 0, 0)
     assert resp.date_end == datetime(2018, 3, 31, 0, 0)

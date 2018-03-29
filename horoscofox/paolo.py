@@ -14,3 +14,5 @@ class PaoloClient():
         sign = getattr(self, sign, None)
         if kind == 'today':
             return sign.today()
+        elif kind == 'tomorrow':
+            return sign.tomorrow()
