@@ -10,4 +10,8 @@ class Response():
         self.date_end = date_end
 
     def json(self):
-        return self.__dict__
+        return {
+            'text' : self.text,
+            'date_start' : self.date_start,
+            'date_end' : self.date_end,
+        }
