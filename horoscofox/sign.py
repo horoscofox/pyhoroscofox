@@ -47,6 +47,12 @@ class Sign():
             date_end = date_start + timedelta(days=1)
         elif kind == 'tomorrow':
             date_end = date_start + timedelta(days=1)
+
+        if date_start:
+            date_start = date_start.date()
+
+        if date_end:
+            date_end = date_end.date()
         # elif kind == 'monthly':
         #     date_end = date_start + timedelta(days=28)
 
