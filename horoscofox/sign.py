@@ -2,6 +2,7 @@ import requests
 from datetime import datetime, timedelta
 
 from .constants import URL_ENDPOINT
+from .errors import PaoloException
 from .response import Response
 
 class Sign():
@@ -25,10 +26,15 @@ class Sign():
         }
 
     def _generic_request(self, kind):
-        r = requests.post(
-            URL_ENDPOINT, 
-            json=self._generic_body(kind),
-        )
+        try:
+            r = requests.post(
+                URL_ENDPOINT, 
+                json=self._generic_body(kind),
+            )
+            if r.status_code != 200:
+                raise PaoloException('Error using API!')
+        except requests.exceptions.ConnectionError as ex:
+            raise PaoloException('Connection error!')
         json_resp = r.json()
         date_start = datetime.strptime(
             json_resp['result']['elem'][0]['content_date'], 

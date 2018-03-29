@@ -1,4 +1,5 @@
 from .constants import SIGNS
+from .errors import PaoloException
 from .sign import Sign
 
 
@@ -16,3 +17,5 @@ class PaoloClient():
             return sign.today()
         elif kind == 'tomorrow':
             return sign.tomorrow()
+        else:
+            raise PaoloException()
