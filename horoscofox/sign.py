@@ -37,8 +37,8 @@ class Sign():
         date_end = None
         if kind == 'daily':
             date_end = date_start + timedelta(days=1)
-        # elif kind == 'weekly':
-        #     date_end = date_start + timedelta(days=7)
+        elif kind == 'tomorrow':
+            date_end = date_start + timedelta(days=1)
         # elif kind == 'monthly':
         #     date_end = date_start + timedelta(days=28)
             
@@ -49,6 +49,9 @@ class Sign():
 
     def today(self):
         return self._generic_request('daily')
+
+    def tomorrow(self):
+        return self._generic_request('tomorrow')
 
     # def week(self):
     #     return self._generic_request('weekly')
