@@ -1,0 +1,2 @@
+class PaoloException(Exception):
+    pass
