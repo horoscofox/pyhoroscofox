@@ -29,6 +29,15 @@ pip install horoscofox
 ```py
 from horoscofox import paolo
 
-virgo_today = paolo.get(sign='virgo', kind='daily')
+virgo_today = paolo.virgo.today()
+virgo_today.text
+```
+
+Or using the `get` method
+
+```py
+from horoscofox import paolo
+
+virgo_today = paolo.get(sign='virgo', kind='today')
 virgo_today.text
 ```
