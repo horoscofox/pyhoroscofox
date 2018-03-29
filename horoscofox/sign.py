@@ -4,6 +4,8 @@ from datetime import datetime, timedelta
 from .constants import URL_ENDPOINT
 from .errors import PaoloException
 from .response import Response
+from random import randint
+
 
 class Sign():
 
@@ -12,7 +14,7 @@ class Sign():
 
     def _generic_body(self, kind):
         return {
-            "id": "5713030",
+            "id": str(randint(330000, 9900000)),
             "method": "getContents",
             "params": {
                 "config": {
@@ -28,16 +30,16 @@ class Sign():
     def _generic_request(self, kind):
         try:
             r = requests.post(
-                URL_ENDPOINT, 
+                URL_ENDPOINT,
                 json=self._generic_body(kind),
             )
             if r.status_code != 200:
                 raise PaoloException('Error using API!')
-        except requests.exceptions.ConnectionError as ex:
+        except requests.exceptions.ConnectionError:
             raise PaoloException('Connection error!')
         json_resp = r.json()
         date_start = datetime.strptime(
-            json_resp['result']['elem'][0]['content_date'], 
+            json_resp['result']['elem'][0]['content_date'],
             '%Y-%m-%d  %H:%M:%S'
         )
         date_end = None
@@ -47,9 +49,9 @@ class Sign():
             date_end = date_start + timedelta(days=1)
         # elif kind == 'monthly':
         #     date_end = date_start + timedelta(days=28)
-            
+
         return Response(
-            json_resp['result']['elem'][0]['text'], 
+            json_resp['result']['elem'][0]['text'],
             date_start, date_end
         )
 
@@ -61,6 +63,6 @@ class Sign():
 
     # def week(self):
     #     return self._generic_request('weekly')
-    
+
     # def month(self):
     #     return self._generic_request('monthly')
