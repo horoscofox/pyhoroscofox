@@ -29,7 +29,13 @@ def test_client_today(mocker):
     mocked_post = mocker.patch('horoscofox.sign.requests.post')
     mocked_post.return_value.status_code = 200
     mocked_post.return_value.json.return_value = mock_response
+
     resp = paolo.scorpio.today()
+    assert resp.text == 'Va tutto male'
+    assert resp.date_start == datetime(2018, 3, 29, 0, 0)
+    assert resp.date_end == datetime(2018, 3, 30, 0, 0)
+
+    resp = paolo.get(sign='scorpio', kind='today')
     assert resp.text == 'Va tutto male'
     assert resp.date_start == datetime(2018, 3, 29, 0, 0)
     assert resp.date_end == datetime(2018, 3, 30, 0, 0)

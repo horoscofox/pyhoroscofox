@@ -34,14 +34,14 @@ class Sign():
             json_resp['result']['elem'][0]['content_date'], 
             '%Y-%m-%d  %H:%M:%S'
         )
-        if kind == 'weekly':
-            date_end = date_start + timedelta(days=7)
-        elif kind == 'daily':
+        date_end = None
+        if kind == 'daily':
             date_end = date_start + timedelta(days=1)
-        elif kind == 'monthly':
-            date_end = date_start + timedelta(days=28)
-        else:
-            date_end = None
+        # elif kind == 'weekly':
+        #     date_end = date_start + timedelta(days=7)
+        # elif kind == 'monthly':
+        #     date_end = date_start + timedelta(days=28)
+            
         return Response(
             json_resp['result']['elem'][0]['text'], 
             date_start, date_end
@@ -50,8 +50,8 @@ class Sign():
     def today(self):
         return self._generic_request('daily')
 
-    def week(self):
-        return self._generic_request('weekly')
+    # def week(self):
+    #     return self._generic_request('weekly')
     
-    def month(self):
-        return self._generic_request('monthly')
+    # def month(self):
+    #     return self._generic_request('monthly')
