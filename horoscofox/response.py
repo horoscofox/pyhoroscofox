@@ -12,6 +12,6 @@ class Response():
     def json(self):
         return {
             'text' : self.text,
-            'date_start' : self.date_start,
-            'date_end' : self.date_end,
+            'date_start' : self.date_start.isoformat(),
+            'date_end' : None if not self.date_end else self.date_end.isoformat(),
         }
