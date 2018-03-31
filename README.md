@@ -36,8 +36,9 @@ virgo_today.text
 Or using the `get` method
 
 ```py
+import horoscofox
 from horoscofox import paolo
 
-virgo_today = paolo.get(sign='virgo', kind='today')
+virgo_today = paolo.get(sign=horoscofox.VIRGO, kind=horoscofox.TODAY)
 virgo_today.text
 ```

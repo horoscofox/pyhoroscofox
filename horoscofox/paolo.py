@@ -1,8 +1,6 @@
-from .constants import SIGNS
+from .constants import SIGNS, KINDS
 from .errors import PaoloException
 from .sign import Sign
-
-KINDS_ALLOWED = ['today', 'tomorrow']
 
 
 class PaoloClient():
@@ -16,10 +14,12 @@ class PaoloClient():
     def get(self, sign, kind):
         if sign not in SIGNS:
             raise PaoloException(
-                'No sign allowed, did you mean one of '+str(SIGNS))
-        if kind not in KINDS_ALLOWED:
+                'Sign not allowed, did you mean one of ' + str(SIGNS)
+            )
+        if kind not in KINDS:
             raise PaoloException(
-                'No kind allowed, did you mean one of '+str(KINDS_ALLOWED))
+                'Kind not allowed, did you mean one of ' + str(KINDS)
+            )
         sign = getattr(self, sign, None)
         if kind == 'today':
             return sign.today()
