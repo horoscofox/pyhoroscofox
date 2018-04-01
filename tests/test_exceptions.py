@@ -4,17 +4,18 @@ from horoscofox import paolo
 from horoscofox.errors import PaoloException
 from requests.exceptions import ConnectionError
 
+
 def test_exceptions_raises_nosign_and_date():
     with pytest.raises(PaoloException) as excinfo:
         paolo.get(sign='sign-not-in-list', kind='tomorrow')
-    assert 'Sign not allowed, did you mean one of [\'capricorn\', \'acquarius\', \'pisces\', \'aries\', \'taurus\', \'gemini\', \'cancer\', \'leo\', \'virgo\', \'libra\', \'scorpio\', \'sagittarius\']' in str(
+    assert "Sign not allowed, did you mean one of ['capricorn', 'acquarius', 'pisces', 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius']" in str(
         excinfo.value)
 
 
 def test_exceptions_raises_virgo_and_nodate():
     with pytest.raises(PaoloException) as excinfo:
         paolo.get(sign='virgo', kind='day-after-tomorrow')
-    assert 'Kind not allowed, did you mean one of [\'today\', \'tomorrow\']' in str(
+    assert "Kind not allowed, did you mean one of ['today', 'tomorrow', 'week']" in str(
         excinfo.value)
 
 

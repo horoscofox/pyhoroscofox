@@ -30,10 +30,12 @@ SIGNS = [
 
 TODAY = 'today'
 TOMORROW = 'tomorrow'
+WEEK = 'week'
 
 KINDS = [
     TODAY,
-    TOMORROW
+    TOMORROW,
+    WEEK
 ]
 
 URL_ENDPOINT = base64.b64decode(
@@ -55,5 +57,6 @@ __all__ = [
     'SAGITTARIUS',
 
     'TODAY',
-    'TOMORROW'
+    'TOMORROW',
+    'WEEK'
 ]

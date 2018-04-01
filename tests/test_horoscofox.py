@@ -86,12 +86,12 @@ def test_client_json_response(mocker):
                     "text": "La brutta persona che eravate un tempo non esiste già più. Ora siete una brutta persona completamente nuova.",
                     "short_text": "La brutta persona che eravate un tempo non esiste già più",
                     "content_id": "12345678",
-                    "content_date": "2018-03-30 00:00:00",
+                    "content_date": "2018-03-26 00:00:00",
                     "title": "VERGINE",
-                    "subtitle": "29 Marzo 2018"
+                    "subtitle": "26 Marzo 2018"
                 }
             ],
-            "datetime": "2018-03-29 00:10:30",
+            "datetime": "2018-03-26 00:10:30",
             "timestamp": 1522281896,
             "t_active": "true",
             "t_days": 1,
@@ -105,7 +105,7 @@ def test_client_json_response(mocker):
     mocked_post.return_value.status_code = 200
     mocked_post.return_value.json.return_value = mock_response
 
-    resp = paolo.get(sign='virgo', kind='tomorrow').json()
+    resp = paolo.get(sign='virgo', kind='week').json()
     assert resp['text'] == 'La brutta persona che eravate un tempo non esiste già più. Ora siete una brutta persona completamente nuova.'
-    assert resp['date_start'] == '2018-03-30'
-    assert resp['date_end'] == '2018-03-31'
+    assert resp['date_start'] == '2018-03-26'
+    assert resp['date_end'] == '2018-04-02'

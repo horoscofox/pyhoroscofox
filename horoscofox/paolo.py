@@ -25,3 +25,5 @@ class PaoloClient():
             return sign.today()
         elif kind == 'tomorrow':
             return sign.tomorrow()
+        elif kind == 'week':
+            return sign.week()

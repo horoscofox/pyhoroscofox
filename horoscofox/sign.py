@@ -47,6 +47,8 @@ class Sign():
             date_end = date_start + timedelta(days=1)
         elif kind == 'tomorrow':
             date_end = date_start + timedelta(days=1)
+        elif kind == 'weekly':
+            date_end = date_start + timedelta(days=7)
 
         if date_start:
             date_start = date_start.date()
@@ -67,8 +69,8 @@ class Sign():
     def tomorrow(self):
         return self._generic_request('tomorrow')
 
-    # def week(self):
-    #     return self._generic_request('weekly')
+    def week(self):
+        return self._generic_request('weekly')
 
     # def month(self):
     #     return self._generic_request('monthly')
