@@ -16,7 +16,7 @@
     </a>
 </p>
 
-Retrieve your horoscope, written by Paolo Fox
+Retrieve your horoscope, written by Paolo Fox and Branko
 
 
 ## How to use 👾
@@ -25,7 +25,7 @@ Retrieve your horoscope, written by Paolo Fox
 pip install horoscofox
 ```
 
-#### Get horoscope for Virgo of today and manage response
+#### Get horoscope for Virgo of today and manage response from Paolo
 ```py
 from horoscofox import paolo
 
@@ -40,5 +40,15 @@ import horoscofox
 from horoscofox import paolo
 
 virgo_today = paolo.get(sign=horoscofox.VIRGO, kind=horoscofox.TODAY)
+virgo_today.text
+```
+
+#### If you prefer Branko...
+
+```py
+import horoscofox
+from horoscofox import branko
+
+virgo_today = branko.virgo.today()
 virgo_today.text
 ```

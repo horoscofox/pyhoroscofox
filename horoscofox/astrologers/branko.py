@@ -8,14 +8,11 @@ class BrankoClient(Astrologer):
 
     sign_class = BrankoSign
 
-    def get(self, sign, kind='today'):
-        if sign not in SIGNS:
-            raise AstrologerException(
-                'Sign not allowed, did you mean one of ' + str(SIGNS)
-            )
+    def _check_kind(self, kind):
         if kind != "today":
             raise AstrologerException(
                 "Sorry, at the moment Branko can see only today's horoscope")
-        sign = getattr(self, sign, None)
+
+    def _get(self, sign, kind):
         if kind == 'today':
             return sign.today()
