@@ -1,11 +1,10 @@
 from .astrologer import Astrologer
-from .constants import SIGNS, KINDS
-from .errors import AstrologerException
-from .signs import PaoloSign
+from horoscofox.constants import SIGNS, KINDS
+from horoscofox.errors import AstrologerException
+from horoscofox.signs.paolosign import PaoloSign
 
 
 class PaoloClient(Astrologer):
-
     sign_class = PaoloSign
 
     def get(self, sign, kind):

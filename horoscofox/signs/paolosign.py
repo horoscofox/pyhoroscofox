@@ -1,15 +1,12 @@
+from .sign import Sign
+
 import requests
 from datetime import datetime, timedelta
 
-from .constants import PAOLO_URL_ENDPOINT
-from .errors import AstrologerException
-from .response import Response
+from horoscofox.constants import PAOLO_URL_ENDPOINT
+from horoscofox.errors import AstrologerException
+from horoscofox.response import Response
 from random import randint
-
-
-class Sign():
-    def __init__(self, sign):
-        self.sign = sign
 
 
 class PaoloSign(Sign):
