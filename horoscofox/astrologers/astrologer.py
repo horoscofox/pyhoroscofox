@@ -1,5 +1,5 @@
-from .constants import SIGNS
-from .errors import AstrologerException
+from horoscofox.constants import SIGNS
+from horoscofox.errors import AstrologerException
 
 
 class Astrologer():

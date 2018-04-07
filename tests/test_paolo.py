@@ -32,7 +32,7 @@ def test_client_today(mocker):
         },
         "id": "5713030"
     }
-    mocked_post = mocker.patch('horoscofox.signs.requests.post')
+    mocked_post = mocker.patch('horoscofox.signs.paolosign.requests.post')
     mocked_post.return_value.status_code = 200
     mocked_post.return_value.json.return_value = mock_response
 
@@ -70,7 +70,7 @@ def test_client_tomorrow(mocker):
         },
         "id": "5713030"
     }
-    mocked_post = mocker.patch('horoscofox.signs.requests.post')
+    mocked_post = mocker.patch('horoscofox.signs.paolosign.requests.post')
     mocked_post.return_value.status_code = 200
     mocked_post.return_value.json.return_value = mock_response
 
@@ -108,7 +108,7 @@ def test_client_json_response(mocker):
         },
         "id": "12345678"
     }
-    mocked_post = mocker.patch('horoscofox.signs.requests.post')
+    mocked_post = mocker.patch('horoscofox.signs.paolosign.requests.post')
     mocked_post.return_value.status_code = 200
     mocked_post.return_value.json.return_value = mock_response
 
