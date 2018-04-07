@@ -19,7 +19,7 @@
 Retrieve your horoscope, written by Paolo Fox and Branko
 
 
-## How to use 👾
+## How to use 💫
 
 ```sh
 pip install horoscofox
