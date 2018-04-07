@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 setup(
@@ -8,5 +8,15 @@ setup(
     license='MIT',
     author='Owanesh and astagi',
     description='',
-    long_description=open('README.md').read()
+    long_description=open('README.md').read(),
+    packages=find_packages(),
+    install_requires=[
+        "requests==2.18.4"
+    ],
+    classifiers=[
+        'Environment :: Web Environment',
+        'Intended Audience :: Developers',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3'
+    ]
 )
