@@ -1,2 +1,2 @@
-class PaoloException(Exception):
+class AstrologerException(Exception):
     pass

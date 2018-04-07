@@ -1,16 +1,18 @@
 import requests
 from datetime import datetime, timedelta
 
-from .constants import URL_ENDPOINT
-from .errors import PaoloException
+from .constants import PAOLO_URL_ENDPOINT
+from .errors import AstrologerException
 from .response import Response
 from random import randint
 
 
 class Sign():
-
     def __init__(self, sign):
         self.sign = sign
+
+
+class PaoloSign(Sign):
 
     def _generic_body(self, kind):
         return {
@@ -30,13 +32,13 @@ class Sign():
     def _generic_request(self, kind):
         try:
             r = requests.post(
-                URL_ENDPOINT,
+                PAOLO_URL_ENDPOINT,
                 json=self._generic_body(kind),
             )
             if r.status_code != 200:
-                raise PaoloException('Error using API!')
+                raise AstrologerException('Error using API!')
         except requests.exceptions.ConnectionError:
-            raise PaoloException('Connection error!')
+            raise AstrologerException('Connection error!')
         json_resp = r.json()
         date_start = datetime.strptime(
             json_resp['result']['elem'][0]['content_date'],
@@ -55,8 +57,6 @@ class Sign():
 
         if date_end:
             date_end = date_end.date()
-        # elif kind == 'monthly':
-        #     date_end = date_start + timedelta(days=28)
 
         return Response(
             json_resp['result']['elem'][0]['text'],
@@ -71,6 +71,3 @@ class Sign():
 
     def week(self):
         return self._generic_request('weekly')
-
-    # def month(self):
-    #     return self._generic_request('monthly')

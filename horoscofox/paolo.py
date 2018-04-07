@@ -1,23 +1,20 @@
+from .astrologer import Astrologer
 from .constants import SIGNS, KINDS
-from .errors import PaoloException
-from .sign import Sign
+from .errors import AstrologerException
+from .signs import PaoloSign
 
 
-class PaoloClient():
+class PaoloClient(Astrologer):
 
-    def __init__(self):
-        super().__init__()
-        for sign in SIGNS:
-            sign_object = Sign(sign)
-            setattr(self, sign, sign_object)
+    sign_class = PaoloSign
 
     def get(self, sign, kind):
         if sign not in SIGNS:
-            raise PaoloException(
+            raise AstrologerException(
                 'Sign not allowed, did you mean one of ' + str(SIGNS)
             )
         if kind not in KINDS:
-            raise PaoloException(
+            raise AstrologerException(
                 'Kind not allowed, did you mean one of ' + str(KINDS)
             )
         sign = getattr(self, sign, None)
