@@ -1,5 +1,12 @@
+import horoscofox
+
 from datetime import datetime
 from horoscofox import paolo
+
+
+def test_it_signs():
+    assert horoscofox.IT_SIGNS[horoscofox.SCORPIO] == 'scorpione'
+    assert horoscofox.IT_SIGNS[horoscofox.VIRGO] == 'vergine'
 
 
 def test_client_today(mocker):

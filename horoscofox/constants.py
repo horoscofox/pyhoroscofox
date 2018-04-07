@@ -38,6 +38,21 @@ KINDS = [
     WEEK
 ]
 
+IT_SIGNS = {
+    CAPRICORN : 'capricorno',
+    ACQUARIUS : 'acquario',
+    PISCES : 'pesci',
+    ARIES : 'ariete',
+    TAURUS : 'toro',
+    GEMINI : 'gemelli',
+    CANCER : 'cancro',
+    LEO : 'leone',
+    VIRGO : 'vergine',
+    LIBRA : 'bilancia',
+    SCORPIO : 'scorpione',
+    SAGITTARIUS : 'sagittario'
+}
+
 PAOLO_URL_ENDPOINT = base64.b64decode(
     '==wL0VmbuAHch1SZ2lGdjFmclRnbp5iMtJnLlJ2LvoDc0RHa'[::-1]
 ).decode('UTF-8')
@@ -58,5 +73,7 @@ __all__ = [
 
     'TODAY',
     'TOMORROW',
-    'WEEK'
+    'WEEK',
+
+    'IT_SIGNS'
 ]
