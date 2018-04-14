@@ -1,7 +1,7 @@
 import base64
 
 CAPRICORN = 'capricorn'
-ACQUARIUS = 'acquarius'
+AQUARIUS = 'aquarius'
 PISCES = 'pisces'
 ARIES = 'aries'
 TAURUS = 'taurus'
@@ -15,7 +15,7 @@ SAGITTARIUS = 'sagittarius'
 
 SIGNS = [
     CAPRICORN,
-    ACQUARIUS,
+    AQUARIUS,
     PISCES,
     ARIES,
     TAURUS,
@@ -40,7 +40,7 @@ KINDS = [
 
 IT_SIGNS = {
     CAPRICORN: 'capricorno',
-    ACQUARIUS: 'acquario',
+    AQUARIUS: 'acquario',
     PISCES: 'pesci',
     ARIES: 'ariete',
     TAURUS: 'toro',
@@ -65,7 +65,7 @@ BRANKO_URL_ENDPOINT = base64.b64decode(
 
 __all__ = [
     'CAPRICORN',
-    'ACQUARIUS',
+    'AQUARIUS',
     'PISCES',
     'ARIES',
     'TAURUS',

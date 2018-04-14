@@ -8,11 +8,11 @@ from requests.exceptions import ConnectionError
 def test_exceptions_raises_nosign_and_date():
     with pytest.raises(AstrologerException) as excinfo:
         paolo.get(sign='sign-not-in-list', kind='tomorrow')
-    assert "Sign not allowed, did you mean one of ['capricorn', 'acquarius', 'pisces', 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius']" in str(
+    assert "Sign not allowed, did you mean one of ['capricorn', 'aquarius', 'pisces', 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius']" in str(
         excinfo.value)
     with pytest.raises(AstrologerException) as excinfo:
         branko.get(sign='sign-not-in-list')
-    assert "Sign not allowed, did you mean one of ['capricorn', 'acquarius', 'pisces', 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius']" in str(
+    assert "Sign not allowed, did you mean one of ['capricorn', 'aquarius', 'pisces', 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius']" in str(
         excinfo.value)
 
 
