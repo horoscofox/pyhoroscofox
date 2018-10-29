@@ -3,5 +3,5 @@
 pytest==3.9.3
 pytest-cov==2.6.0
 pytest-mock==1.10.0
-coverage
+coverage==4.5.1
 codecov
