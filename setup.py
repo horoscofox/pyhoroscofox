@@ -11,7 +11,7 @@ setup(
     long_description=open('README.md').read(),
     packages=find_packages(),
     install_requires=[
-        "requests==2.18.4"
+        "requests>=2.20.0"
     ],
     classifiers=[
         'Environment :: Web Environment',
