@@ -19,11 +19,11 @@ def test_exceptions_raises_nosign_and_date():
 def test_exceptions_raises_virgo_and_nodate():
     with pytest.raises(AstrologerException) as excinfo:
         paolo.get(sign='virgo', kind='day-after-tomorrow')
-    assert "Kind not allowed, did you mean one of ['today', 'tomorrow', 'week']" in str(
+    assert "Kind not allowed, did you mean one of ['today', 'tomorrow', 'week', 'month', 'info']" in str(
         excinfo.value)
 
 
-def test_exceptions_using_appi(mocker):
+def test_exceptions_using_api(mocker):
     mocked_post = mocker.patch('horoscofox.signs.paolosign.requests.post')
     mocked_post.return_value.status_code = 500
     mocked_get = mocker.patch('horoscofox.signs.brankosign.requests.get')

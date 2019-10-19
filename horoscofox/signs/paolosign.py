@@ -2,7 +2,7 @@ from .sign import Sign
 
 import requests
 from datetime import datetime, timedelta
-
+import calendar 
 from horoscofox.constants import PAOLO_URL_ENDPOINT
 from horoscofox.errors import AstrologerException
 from horoscofox.response import Response
@@ -13,7 +13,7 @@ class PaoloSign(Sign):
 
     def _generic_body(self, kind):
         return {
-            "id": str(randint(330000, 9900000)),
+            "id": str(randint(310000, 9990000)),
             "method": "getContents",
             "params": {
                 "config": {
@@ -48,6 +48,8 @@ class PaoloSign(Sign):
             date_end = date_start + timedelta(days=1)
         elif kind == 'weekly':
             date_end = date_start + timedelta(days=7)
+        elif kind == 'monthly':
+            date_end = date_start.replace(day=calendar.monthrange(date_start.year, date_start.month)[1])
 
         if date_start:
             date_start = date_start.date()
@@ -60,6 +62,25 @@ class PaoloSign(Sign):
             date_start, date_end
         )
 
+
+    def _info_request(self):
+        try:
+            r = requests.post(
+                PAOLO_URL_ENDPOINT,
+                json=self._generic_body('info'),
+            )
+            if r.status_code != 200:
+                raise AstrologerException('Error using API!')
+        except requests.exceptions.ConnectionError:
+            raise AstrologerException('Connection error!')
+        json_resp = r.json()
+        print(json_resp)
+        return Response(
+            json_resp['result']['elem'][0]['text'],
+            datetime(datetime.now().year,1,1).date(),
+            datetime(datetime.now().year,12,31).date()
+        )
+        
     def today(self):
         return self._generic_request('daily')
 
@@ -68,3 +89,9 @@ class PaoloSign(Sign):
 
     def week(self):
         return self._generic_request('weekly')
+
+    def month(self):
+        return self._generic_request('monthly')
+
+    def info(self):
+        return self._info_request()

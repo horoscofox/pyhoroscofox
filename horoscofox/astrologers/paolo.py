@@ -15,3 +15,7 @@ class PaoloClient(Astrologer):
             return sign.tomorrow()
         elif kind == 'week':
             return sign.week()
+        elif kind == 'month':
+            return sign.month()
+        elif kind == 'info':
+            return sign.info()

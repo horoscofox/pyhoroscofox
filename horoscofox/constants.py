@@ -31,11 +31,15 @@ SIGNS = [
 TODAY = 'today'
 TOMORROW = 'tomorrow'
 WEEK = 'week'
+MONTH = 'month'
+INFO = 'info'
 
 KINDS = [
     TODAY,
     TOMORROW,
-    WEEK
+    WEEK,
+    MONTH,
+    INFO
 ]
 
 IT_SIGNS = {
@@ -80,6 +84,8 @@ __all__ = [
     'TODAY',
     'TOMORROW',
     'WEEK',
+    'MONTH',
+    'INFO',
 
     'IT_SIGNS'
 ]
