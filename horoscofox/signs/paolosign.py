@@ -1,7 +1,7 @@
 from .sign import Sign
 
 import requests
-from datetime import datetime, timedelta
+from datetime import datetime,date, timedelta
 import calendar 
 from horoscofox.constants import PAOLO_URL_ENDPOINT
 from horoscofox.errors import AstrologerException
@@ -74,11 +74,11 @@ class PaoloSign(Sign):
         except requests.exceptions.ConnectionError:
             raise AstrologerException('Connection error!')
         json_resp = r.json()
-        print(json_resp)
+        year = date.today().year
         return Response(
             json_resp['result']['elem'][0]['text'],
-            datetime(datetime.now().year,1,1).date(),
-            datetime(datetime.now().year,12,31).date()
+            datetime(year,1,1).date(),
+            datetime(year,12,31).date()
         )
         
     def today(self):

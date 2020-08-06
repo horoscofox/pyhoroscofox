@@ -177,9 +177,14 @@ def test_client_info(mocker):
         },
         "id": "6747600"
     }
+
     mocked_post = mocker.patch('horoscofox.signs.paolosign.requests.post')
     mocked_post.return_value.status_code = 200
     mocked_post.return_value.json.return_value = mock_response
+
+    mocked_date = mocker.patch('horoscofox.signs.paolosign.date')
+    target = datetime(2019, 1, 1, 0, 0).date()
+    mocked_date.today.return_value = target
 
     resp = paolo.virgo.info()
     assert resp.text == "Il metodo, l'ordine, la precisione, tutto deve essere inquadrato o quantomeno affrontato con attenzione."
