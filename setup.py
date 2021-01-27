@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='horoscofox',
-    version='1.1',
+    version='1.1.1',
     url='https://github.com/horoscofox/pyhoroscofox',
     license='MIT',
     author='Owanesh',

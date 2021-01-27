@@ -17,3 +17,7 @@ print (scorpio_tomorrow.text)
 print ('♍️  Virgo Today')
 virgo_today = paolo.get(sign=horoscofox.VIRGO, kind=horoscofox.TODAY)
 print (virgo_today.text)
+
+print ('♍️  Virgo Info')
+virgo_info = paolo.get(sign=horoscofox.VIRGO, kind=horoscofox.INFO)
+print (virgo_info.text)

@@ -11,14 +11,14 @@ from random import randint
 
 class PaoloSign(Sign):
 
-    def _generic_body(self, kind):
+    def _generic_body(self):
         return {
             "id": str(randint(310000, 9990000)),
             "method": "getContents",
             "params": {
                 "config": {
                     "app_uid": "5317e225-47f7-96af8059",
-                    "action": kind,
+                    "action": "fullHoroscope",
                     "content_provider": "mmdb",
                     "content_type": "text",
                     "service_param": self.sign
@@ -30,7 +30,7 @@ class PaoloSign(Sign):
         try:
             r = requests.post(
                 PAOLO_URL_ENDPOINT,
-                json=self._generic_body(kind),
+                json=self._generic_body(),
             )
             if r.status_code != 200:
                 raise AstrologerException('Error using API!')
@@ -38,7 +38,7 @@ class PaoloSign(Sign):
             raise AstrologerException('Connection error!')
         json_resp = r.json()
         date_start = datetime.strptime(
-            json_resp['result']['elem'][0]['content_date'],
+            json_resp['result']['elem'][kind]['content_date'],
             '%Y-%m-%d  %H:%M:%S'
         )
         date_end = None
@@ -58,7 +58,7 @@ class PaoloSign(Sign):
             date_end = date_end.date()
 
         return Response(
-            json_resp['result']['elem'][0]['text'],
+            json_resp['result']['elem'][kind]['text'],
             date_start, date_end
         )
 
@@ -67,7 +67,7 @@ class PaoloSign(Sign):
         try:
             r = requests.post(
                 PAOLO_URL_ENDPOINT,
-                json=self._generic_body('info'),
+                json=self._generic_body(),
             )
             if r.status_code != 200:
                 raise AstrologerException('Error using API!')
@@ -76,7 +76,7 @@ class PaoloSign(Sign):
         json_resp = r.json()
         year = date.today().year
         return Response(
-            json_resp['result']['elem'][0]['text'],
+            json_resp['result']['elem']['info']['text'],
             datetime(year,1,1).date(),
             datetime(year,12,31).date()
         )
