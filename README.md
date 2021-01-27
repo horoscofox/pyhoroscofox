@@ -1,16 +1,5 @@
-<p align="center">
-    <h1>PyHoroscofox</h1>
-    <br>
-    <a href="https://codecov.io/gh/horoscofox/pyhoroscofox">
-      <img src="https://codecov.io/gh/horoscofox/pyhoroscofox/branch/master/graph/badge.svg" />
-    </a>
-    <a href="https://github.com/horoscofox/pyhoroscofox/blob/master/LICENSE">
-      <img src="https://img.shields.io/badge/License-MIT-blue.svg" />
-    </a>
-    <a href="https://travis-ci.org/horoscofox/pyhoroscofox">
-      <img src="https://travis-ci.org/horoscofox/pyhoroscofox.svg?branch=master" />
-    </a> 
-</p>
+# PyHoroscofox
+![Pyhoroscofox](https://github.com/horoscofox/pyhoroscofox/workflows/Pyhoroscofox/badge.svg)
 
 Retrieve your horoscope, written by Paolo Fox and Branko
 
@@ -18,7 +7,9 @@ Retrieve your horoscope, written by Paolo Fox and Branko
 ## How to use 
 
 ```sh
-pip install horoscofox
+cd pyhoroscofox
+pip install -e .
+python demo.py
 ```
 
 #### Get horoscope for Virgo of today and manage response from Paolo
